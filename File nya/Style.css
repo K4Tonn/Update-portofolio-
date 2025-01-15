@@ -3,8 +3,12 @@ body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
     color: #ffffff;
-    background: linear-gradient(to right, #000428, #004e92); /* Gradient hitam biru */
+    background: linear-gradient(to right, #555555, #000000); /* Gradient abu-abu ke hitam */
     overflow-x: hidden;
+    -webkit-user-select: none; /* Chrome, Safari, Opera */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer/Edge */
+    user-select: none;         /* Non-prefixed version, currently supported by Chrome, Opera and Firefox */
 }
 
 /* Container */
@@ -24,9 +28,9 @@ body {
     text-align: center;
     padding: 2em;
     overflow: hidden;
-    border-bottom: 4px solid #004e92; /* Border sesuai dengan warna background */
+    border-bottom: 4px solid #444444; /* Warna abu-abu gelap */
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    background: linear-gradient(to right, #000428, #004e92), url('background.jpg') no-repeat center center/cover;
+    background: linear-gradient(to right, #555555, #000000), url('background.jpg') no-repeat center center/cover;
 }
 
 .hero::before {
@@ -86,7 +90,7 @@ body {
     padding: 1em 2.5em;
     font-size: 1.2em;
     color: white;
-    background: linear-gradient(45deg, #007bff, #00d4ff);
+    background: linear-gradient(45deg, #333333, #000000); /* Warna abu-abu gelap ke hitam */
     border: none;
     border-radius: 50px;
     cursor: pointer;
@@ -96,7 +100,7 @@ body {
 }
 
 .hero .btn-primary:hover {
-    background: linear-gradient(45deg, #0056b3, #0094d4);
+    background: linear-gradient(45deg, #222222, #000000); /* Warna lebih gelap ke hitam */
     transform: translateY(-3px);
 }
 
@@ -108,7 +112,7 @@ nav {
     top: 0;
     z-index: 1000;
     padding: 0.5em 0;
-    border-top: 4px solid #004e92;
+    border-top: 4px solid #444444;
 }
 
 nav ul {
@@ -130,11 +134,11 @@ nav ul li a {
     padding: 0.5em 1em;
     display: block;
     transition: background 0.3s, transform 0.3s;
-    border-radius: 30px;
+border-radius: 30px;
 }
 
 nav ul li a:hover {
-    background: #007bff;
+    background: #444444; /* Warna abu-abu gelap */
     transform: scale(1.05);
 }
 
@@ -143,7 +147,7 @@ nav ul li a:hover {
     padding: 3em 0;
     text-align: center;
     animation: fadeInUp 1s ease-in-out;
-    border: 2px solid #004e92;
+    border: 2px solid #444444;
     border-radius: 12px;
     margin: 1em 0;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -172,7 +176,7 @@ nav ul li a:hover {
     content: '';
     width: 50px;
     height: 4px;
-    background: #007bff;
+    background: #444444; /* Warna abu-abu gelap */
     display: block;
     margin: 10px auto 0;
     border-radius: 2px;
@@ -191,7 +195,7 @@ nav ul li a:hover {
 /* About Section */
 #about {
     border: 2px solid transparent;
-    border-image: linear-gradient(to right, #000428, #004e92);
+    border-image: linear-gradient(to right, #555555, #000000); /* Warna abu-abu ke hitam */
     border-image-slice: 1;
     border-radius: 12px;
     padding: 20px;
@@ -209,6 +213,7 @@ nav ul li a:hover {
     text-align: left;
 }
 
+/* Profile Picture */
 .profile-pic {
     width: 150px;
     height: 150px;
@@ -253,7 +258,9 @@ nav ul li a:hover {
     border-radius: 15px 50px 30px 50px;
     transition: transform 0.3s, box-shadow 0.3s;
     animation: fadeInUp 1s ease-in-out;
-    border: 2px solid #004e92;
+    border: 2px solid #444444;
+    cursor: pointer; /* Menambahkan cursor pointer untuk interaksi */
+    position: relative; /* Untuk posisi deskripsi */
 }
 
 .card:hover {
@@ -273,10 +280,35 @@ nav ul li a:hover {
     text-align: center;
 }
 
-@media (max-width: 768px) {
-    .project-cards .card.centered {
-        grid-column: span 1;
-    }
+/* Project Description */
+.description {
+    padding: 1em;
+    background: linear-gradient(to right, #555555, #000000); /* Latar belakang gradien */
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    color: #ffffff;
+    display: none; /* Mulai tersembunyi */
+    text-align: left; /* Teks rata kiri */
+    margin-top: 10px; /* Jarak dari atas */
+    overflow: hidden;
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-out, max-height 0.5s ease-out, transform 0.5s ease-out; /* Transisi untuk animasi */
+}
+
+.card.show-description .description {
+    display: block;
+    opacity: 1;
+    max-height: 200px; /* Batas maksimum tinggi */
+    transform: translateY(0);
+}
+
+.card.hide-description .description {
+    opacity: 0;
+    max-height: 0;
+    transform: translateY(-10px);
+    transition: opacity 0.5s ease-in, max-height 0.5s ease-in, transform 0.5s ease-in;
 }
 
 /* Contact Section */
@@ -292,7 +324,7 @@ nav ul li a:hover {
 }
 
 .contact-info a {
-    color: #007bff;
+    color: #444444; /* Warna abu-abu gelap */
     text-decoration: none;
     font-weight: 600;
 }
@@ -303,12 +335,12 @@ nav ul li a:hover {
 
 /* Footer */
 footer {
-    background: linear-gradient(to right, #000428, #004e92);
+    background: linear-gradient(to right, #555555, #000000);
     color: #fff;
     text-align: center;
     padding: 1rem;
     margin-top: 20px;
-    border-top: 4px solid #004e92;
+    border-top: 4px solid #444444;
 }
 
 /* Responsiveness */
